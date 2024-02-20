@@ -30,7 +30,6 @@ function App() {
   return (
     <>
       <main className="App">
-        <h1>Funcionários</h1>
         <AddEmployeeForm addEmployee={addEmployee} />
         <EmployeeList employees={employees} deleteEmployee={deleteEmployee} />
       </main>

@@ -1,8 +1,10 @@
 import { useState } from "react";
-import "./style.scss";
+import Input from "../../Components/Input";
 
 const AddEmployeeForm = ({ addEmployee }) => {
   const [name, setName] = useState("");
+  const [image, setImage] = useState(null)
+  const [bornDate, setBornDate] = useState("")
   const [position, setPosition] = useState("");
   const [wage, setWage] = useState("");
   const [contractType, setContractType] = useState("");
@@ -12,10 +14,10 @@ const AddEmployeeForm = ({ addEmployee }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-  if (!name || !position || !wage || !contractType || !start || !finish) {
-   alert("Por favor, preencha todos os campos.");
-   return false
-  }
+    if (!name || !position || !wage || !contractType || !start || !finish) {
+      alert("Por favor, preencha todos os campos.");
+      return false;
+    }
 
     addEmployee({ name, position, wage, contractType, start, finish });
     setName("");
@@ -26,68 +28,79 @@ const AddEmployeeForm = ({ addEmployee }) => {
     setFinish("");
   };
 
+  const inputs = [
+    {
+      label: "Name",
+      type: "text",
+      placeholder: "Nome do funcionário",
+      value: name,
+      setter: setName,
+    },
+    {
+      label: "Image",
+      type: "text",
+      placeholder: "Url de foto do funcionário",
+      value: image,
+      setter: setImage,
+    },
+    {
+      label: "Nascimento",
+      type: "date",
+      placeholder: "Data de nascimento do funcionário",
+      value: bornDate,
+      setter: setBornDate,
+    },
+    {
+      label: "Posição",
+      type: "text",
+      placeholder: "Posição do funcionário",
+      value: position,
+      setter: setPosition,
+    },
+    {
+      label: "Salário",
+      type: "number",
+      placeholder: "Salário do funcionário",
+      value: wage,
+      setter: setWage,
+    },
+    {
+      label: "Contrato",
+      type: "text",
+      placeholder: "Contrato do funcionário",
+      value: contractType,
+      setter: setContractType,
+    },
+    {
+      label: "Início",
+      type: "date",
+      placeholder: "Início do contrato",
+      value: start,
+      setter: setStart,
+    },
+    {
+      label: "Final",
+      type: "date",
+      placeholder: "Final do contrato",
+      value: finish,
+      setter: setFinish,
+    },
+  ];
+
   return (
     <main>
-        <h3>Cadastre um Funcionário</h3>
+      <h3>Cadastre um Funcionário</h3>
       <form onSubmit={handleSubmit}>
-        <article>
-          <section>
-            <label>Nome:</label>
-            <input
-              type="text"
-              placeholder="Nome"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </section>
-          <section>
-            <label>Posição:</label>
-            <input
-              type="text"
-              placeholder="Posição"
-              value={position}
-              onChange={(e) => setPosition(e.target.value)}
-            />
-          </section>
-          <section>
-            <label>Contrato:</label>
-            <input
-              type="text"
-              placeholder="Contrato"
-              value={contractType}
-              onChange={(e) => setContractType(e.target.value)}
-            />
-          </section>
-        </article>
-        <article>
-          <section>
-            <label>Salário:</label>
-            <input
-              type="number"
-              placeholder="Salário"
-              value={wage}
-              onChange={(e) => setWage(e.target.value)}
-            />
-          </section>
-          <section>
-            <label>Início:</label>
-            <input
-              type="date"
-              placeholder="Início"
-              value={start}
-              onChange={(e) => setStart(e.target.value)}
-            />
-          </section>
-          <section>
-            <label>Final:</label>
-            <input
-              type="date"
-              placeholder="Final"
-              value={finish}
-              onChange={(e) => setFinish(e.target.value)}
-            />
-          </section>
-        </article>
+        {inputs.map((input, index) => (
+          <Input
+            key={index}
+            inputType={input.type}
+            inputLabel={input.label}
+            placeholderText={input.placeholder}
+            value={input.value}
+            inputSetter={input.setter}
+          />
+        ))}
         <button type="submit">Adicionar</button>
       </form>
     </main>

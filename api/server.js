@@ -16,9 +16,9 @@ app.get("/employees", (req, res) => {
 });
 
 app.post("/employees", (req, res) => {
-  const { name, position, contractType, wage, start, finish } = req.body;
+  const { name, image, bornDate, position, contractType, wage, start, finish } = req.body;
   const id = uuidv4();
-  const newEmployee = { id, name, position, contractType, wage, start, finish };
+  const newEmployee = { id, name, image, bornDate, position, contractType, wage, start, finish };
   employees.push(newEmployee);
   res.status(201).json(newEmployee);
 });

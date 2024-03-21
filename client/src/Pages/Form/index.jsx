@@ -10,13 +10,13 @@ const AddEmployeeForm = ({ addEmployee }) => {
   const [finish, setFinish] = useState("");
 
   const handleSubmit = (e) => {
+    e.preventDefault();
 
   if (!name || !position || !wage || !contractType || !start || !finish) {
-    alert("Por favor, preencha todos os campos.");
-    return;
+   alert("Por favor, preencha todos os campos.");
+   return false
   }
 
-    e.preventDefault();
     addEmployee({ name, position, wage, contractType, start, finish });
     setName("");
     setPosition("");

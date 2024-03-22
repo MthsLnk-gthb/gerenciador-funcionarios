@@ -1,20 +1,17 @@
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import Accordion from "react-bootstrap/Accordion";
+import Stack from "react-bootstrap/Stack";
 
 const EmployeeList = ({ employees, deleteEmployee }) => {
   return (
     <>
       {employees && employees.length > 0 ? (
         <>
-          <h3>Lista Funcionários: </h3>
-          <Accordion defaultActiveKey="0">
+          <h2 style={{textAlign: "center", fontSize: "1.5rem", marginTop: "5dvh"}}>Lista Funcionários: </h2>
+          <article style={{display: "flex", flexWrap: "wrap", gap: "15px", justifyContent: "center", alignItems: "center", margin: "5dvh auto"}}>
             {employees.map((employee) => (
-              <Accordion.Item key={employee.id} eventKey={employee.id}>
-                <Accordion.Header>{employee.name}</Accordion.Header>
-                <Accordion.Body>
-                  <Card style={{ width: "18rem" }}>
+                  <Card style={{ width: "18rem" }} key={employee.name}>
                     <Card.Img variant="top" src={employee.image} />
                     <Card.Body>
                       <Card.Title>{employee.name}</Card.Title>
@@ -47,12 +44,11 @@ const EmployeeList = ({ employees, deleteEmployee }) => {
                       </Button>
                     </Card.Body>
                   </Card>
-                </Accordion.Body>
-              </Accordion.Item>
             ))}
-          </Accordion>
+          </article>
         </>
       ) : (
+          
         <h3>A lista está vazia.</h3>
       )}
     </>

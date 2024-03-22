@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
 
-const AddEmployeeForm = ({ addEmployee }) => {
+const AddEmployeeForm = ({ addEmployee, errorMessage }) => {
   const [validated, setValidated] = useState(false);
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
@@ -16,7 +16,7 @@ const AddEmployeeForm = ({ addEmployee }) => {
   const [start, setStart] = useState("");
   const [finish, setFinish] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.currentTarget;
@@ -37,7 +37,7 @@ const AddEmployeeForm = ({ addEmployee }) => {
       !start ||
       !finish
     ) {
-      return false;
+      return;
     }
 
     addEmployee({
@@ -50,6 +50,7 @@ const AddEmployeeForm = ({ addEmployee }) => {
       start,
       finish,
     });
+
     setName("");
     setImage("");
     setBornDate("");
@@ -63,26 +64,27 @@ const AddEmployeeForm = ({ addEmployee }) => {
 
   return (
     <>
-      <h2
-        style={{ textAlign: "center", fontSize: "1.5rem", marginTop: "5dvh" }}
-      >
-        Cadastre um funcionário:{" "}
+      <h2 style={{ textAlign: "center", fontSize: "1.5rem", marginTop: "5vh" }}>
+        Cadastre um funcionário:
       </h2>
+
+      {errorMessage && (
+        <p style={{ color: "red", marginBottom: "10px", textAlign: "center" }}>
+          {errorMessage}
+        </p>
+      )}
+
       <article
         style={{
-          width: "90dvw",
+          width: "90vw",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: "5dvh"
+          marginTop: "5vh",
         }}
       >
-        <Form
-          noValidate
-          validated={validated}
-          onSubmit={handleSubmit}
-        >
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group as={Col} md="4" controlId="validationCustom01">
               <Form.Label>Nome do funcionário</Form.Label>
@@ -195,7 +197,9 @@ const AddEmployeeForm = ({ addEmployee }) => {
               </Form.Control.Feedback>
             </Form.Group>
           </Row>
-          <Button type="submit" style={{width: "300px"}}>Adicionar</Button>
+          <Button type="submit" style={{ width: "300px" }}>
+            Adicionar
+          </Button>
         </Form>
       </article>
     </>

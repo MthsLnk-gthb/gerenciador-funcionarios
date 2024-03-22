@@ -19,6 +19,15 @@ app.post("/employees", (req, res) => {
   const { name, image, bornDate, position, contractType, wage, start, finish } = req.body;
   const id = uuidv4();
   const newEmployee = { id, name, image, bornDate, position, contractType, wage, start, finish };
+
+  const existingEmployee = employees.find(
+    (employee) => employee.name.trim() === name.trim()
+  );
+  if (existingEmployee) {
+    return res
+      .status(400)
+      .json({ message: "Já existe um funcionário com esse nome" });
+  }
   employees.push(newEmployee);
   res.status(201).json(newEmployee);
 });

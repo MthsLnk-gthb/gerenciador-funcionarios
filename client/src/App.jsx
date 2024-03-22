@@ -9,14 +9,14 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/employees")
+      .get("http://localhost:5000")
       .then((response) => setEmployees(response.data))
       .catch((error) => console.error("Erro ao carregar funcionários:", error));
   }, []);
 
   const addEmployee = (employee) => {
     axios
-      .post("http://localhost:5000/employees", employee)
+      .post("http://localhost:5000", employee)
       .then((response) => {
         setEmployees([...employees, response.data]);
         setErrorMessage(""); // Limpar a mensagem de erro se o envio for bem-sucedido
@@ -30,7 +30,7 @@ function App() {
 
   const deleteEmployee = (id) => {
     axios
-      .delete(`http://localhost:5000/employees/${id}`)
+      .delete(`http://localhost:5000/${id}`)
       .then(() => {
         setEmployees(employees.filter((employee) => employee.id !== id));
       })

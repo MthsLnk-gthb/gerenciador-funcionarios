@@ -11,11 +11,11 @@ app.use(bodyParser.json());
 
 let employees = [];
 
-app.get("/employees", (req, res) => {
+app.get("/", (req, res) => {
   res.json(employees);
 });
 
-app.post("/employees", (req, res) => {
+app.post("/", (req, res) => {
   const { name, image, bornDate, position, contractType, wage, start, finish } = req.body;
   const id = uuidv4();
   const newEmployee = { id, name, image, bornDate, position, contractType, wage, start, finish };
@@ -32,7 +32,7 @@ app.post("/employees", (req, res) => {
   res.status(201).json(newEmployee);
 });
 
-app.delete("/employees/:id", (req, res) => {
+app.delete("/:id", (req, res) => {
   const id = req.params.id;
   const index = employees.findIndex((employee) => employee.id === id);
 
@@ -45,5 +45,5 @@ app.delete("/employees/:id", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}/employees`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

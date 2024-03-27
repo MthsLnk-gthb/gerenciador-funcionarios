@@ -1,72 +1,72 @@
-<h2Projeto Full-Stack Gerenciamento de Funcionários</h2>
+# Projeto Full-Stack Gerenciamento de Funcionários
 
-<p>Nele o usuário pode cadastrar e remover funcionários, informando seus dados como:</p>
-<ul>
-  <li>Nome</li>
-  <li>Data de nascimento</li>
-  <li>Início e final de contrato</li>
-  <li>Tipo de contrato</li>
-  <li>Cargo</li>
-  <li>Salário</li>
-</ul>
+Neste projeto, os usuários podem cadastrar e remover funcionários, informando seus dados, tais como:
 
-<p>Além de contar com a validação do formulário e mensagens de erro</p>
+- Nome
+- Data de nascimento
+- Início e final de contrato
+- Tipo de contrato
+- Cargo
+- Salário
 
-<p>O projeto utiliza <em>React JS e Vite</em> no Front-End e <em>Node + express</em> no Backend</p>
+Além disso, o projeto conta com validação do formulário e mensagens de erro.
 
-<label>Para instalá-lo em sua máquina você pode clonar esse projeto da seguinte maneira:</label>
-<ol>
-  <li>
-    <h3>Clone o Projeto</h3>
+## Tecnologias Utilizadas
+
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
+
+- **Front-End:** React JS e Vite
+- **Back-End:** Node.js e Express
+
+## Instalação
+
+Para instalar o projeto em sua máquina, siga os passos abaixo:
+
+1. Clone o repositório:
+
     ```
-      git clone https://github.com/MthsLnk-gthb/gerenciador-funcionarios.git
+    git clone https://github.com/MthsLnk-gthb/gerenciador-funcionarios.git
     ```
-  </li>
-  <br>
-  <li>
-    <h3>Abra o terminal e acesse a pasta do projeto</h3>
-        ```
-      cd gerenciador-funcionarios
+
+2. Abra o terminal e acesse a pasta do projeto:
+
     ```
-  </li>
-  <br>
-    <li>
-    <h3>Acesse o diretório api com:</h3>
-        ```
-      cd api
-        ```
-      <h4>E execute:</h4>
-        ```
-      npm install
-        ```
-  </li>
-  <br>
-      <li>
-    <h3>Acesse o diretório server com:</h3>
-        ```
-      cd server
-        ```
-      <h4>E execute:</h4>
-        ```
-      npm install
-        ```
-  </li>
-  <br>
-</ol>
+    cd gerenciador-funcionarios
+    ```
 
-<section>
-   <p>Após isso, dentro do diretório <em>client</em>, execute: </p>
-        ```
-      npm run dev
-        ```
-  <p>E acesse o localhost na porta fornecida</p> 
-  <br>
+3. Acesse o diretório `api` e instale as dependências:
 
-  <p>E dentro do diretório <em>api</em> execute o comando: </p>
-  ```
-  node server.js
-  ```
-  <p>Você pode acessá-lo na porta ``` localhost:5000 ```</p>
-</section>
+    ```
+    cd api
+    npm install
+    ```
 
-<p>Seguindo esses passos o projeto deve rodar em sua máquina</p>
+4. Em seguida, acesse o diretório `server` e instale as dependências:
+
+    ```
+    cd ../server
+    npm install
+    ```
+
+## Executando o Projeto
+
+Após a instalação das dependências, siga os passos abaixo para executar o projeto:
+
+1. Dentro do diretório `client`, execute o seguinte comando para iniciar o servidor de desenvolvimento:
+
+    ```
+    npm run dev
+    ```
+
+   O projeto estará disponível em `http://localhost:5000`.
+
+2. Dentro do diretório `api`, execute o seguinte comando para iniciar o servidor:
+
+    ```
+    node server.js
+    ```
+
+   Você poderá acessá-lo em `http://localhost:5000`.
+
+Seguindo esses passos, o projeto deverá estar rodando em sua máquina. 🚀
+
